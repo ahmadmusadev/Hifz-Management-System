@@ -1,704 +1,641 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>حفظ منیجر — چار سالہ پلان (ششماہی و ماہانہ)</title>
-  <style>
-:root{
-  --bg: #fbfdfb;
-  --card: #fff;
-  --accent: #0d3b66;
-  --muted: #666;
-  --success: #2e7d32;
-  --danger: #c62828;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>حفظ منیجر — چار سالہ پلان</title>
+  <style>
+    :root{
+      --bg: #f4f7f6;
+      --card: #ffffff;
+      --accent: #0d3b66;
+      --muted: #6c757d;
+      --border: #dee2e6;
+      --success: #2e7d32;
+      --danger: #c62828;
+      --radius: 8px;
+    }
 
-/* Global reset / better box sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+    /* Global Reset */
+    *, *::before, *::after { box-sizing: border-box; }
 
-body{
-  /* فونٹ فیملی کو بہتر رکھا گیا تاکہ Nastaleeq لوڈ نہ ہونے پر بھی اردو اچھا نظر آئے */
-  font-family: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", "Tahoma", "Arial", sans-serif;
-  background: var(--bg);
-  margin: 0;
-  padding: 0;
-  color: #111;
-  direction: rtl;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    body{
+      font-family: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", "Tahoma", "Arial", sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      direction: rtl;
+      font-size: 16px;
+      line-height: 1.5;
+    }
 
-.wrap{
-  max-width: 1200px;
-  margin: 0 auto; /* سینٹر میں رکھنے کے لیے */
-  padding: 12px;
-}
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 15px;
+    }
 
-.card{
-  background: var(--card);
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  margin: 12px 0;
-}
+    .card{
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
 
-h1, h2, h3 {
-  text-align: center;
-  color: var(--accent);
-  margin-bottom: 8px;
-  margin-top: 16px;
-}
-h1{ font-size: 24px; }
-h2{ font-size: 20px; }
+    h1, h2, h3 {
+      text-align: center;
+      color: var(--accent);
+      margin: 0 0 15px 0;
+      font-weight: 700;
+    }
+    h1{ font-size: 1.5rem; }
+    h2{ font-size: 1.25rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 20px; }
+    h3{ font-size: 1.1rem; color: var(--muted); }
 
-label{
-  display: block;
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 15px;
-}
+    /* --- Form Elements Styling --- */
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-/* Inputs */
-input[type="text"],
-input[type="date"],
-input[type="number"],
-select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  margin-top: 6px;
-  font-family: inherit;
-  font-size: 16px;
-  background: #fff;
-  color: #111;
-}
+    label {
+      display: block;
+      margin-bottom: 5px; /* ان پٹ کے بالکل اوپر */
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
 
-/* layout helpers */
-.row{
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
 
-.col{
-  flex: 1;
-  min-width: 280px;
-}
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(13, 59, 102, 0.1);
+    }
 
-.col-small{
-  flex: 1 1 120px;
-}
+    /* --- Layout Grid System --- */
+    /* General Grid for form rows */
+    .grid-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px; /* افقی اور عمودی گیپ */
+      margin-bottom: 15px;
+    }
 
-/* Buttons */
-button{
-  display: inline-block;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 8px;
-  font-size: 16px;
-  width: auto;
-  text-align: center;
-}
+    /* Special Grid for Monthly Inputs (6 months) */
+    .months-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr); /* Desktop: 6 in one line */
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
-/* focus for accessibility */
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 3px solid rgba(13,59,102,0.15);
-  outline-offset: 2px;
-}
+    /* --- Buttons --- */
+    .btn-container { text-align: center; margin-top: 20px; }
+    
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: inherit;
+      box-shadow: 0 4px 6px rgba(13, 59, 102, 0.2);
+      transition: transform 0.1s;
+    }
+    button:active { transform: scale(0.98); }
 
-/* Responsive table wrapper instead of forcing table display:block */
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
+    /* --- Table Styling --- */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
 
-/* keep table semantics intact */
-table{
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 12px;
-  font-size: 14px;
-  /* remove display:block to preserve table layout */
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px; /* Ensure table doesn't squish too much */
+    }
 
-th, td{
-  border: 1px solid #ddd;
-  padding: 10px 8px;
-  text-align: center;
-  vertical-align: middle;
-  white-space: normal;
-}
+    th, td {
+      padding: 12px 8px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
 
-th{
-  background: #f2f6fb;
-  color: #111;
-}
+    th {
+      background: #f8f9fa;
+      color: var(--accent);
+      font-weight: bold;
+      white-space: nowrap;
+    }
 
-/* small helper classes */
-.muted{ color: var(--muted); font-size: 13px; }
-.small{ font-size: 13px; color: var(--muted); }
+    td { font-size: 0.95rem; }
+    tr:last-child td { border-bottom: none; }
 
-.result{
-  background: #eef7ee;
-  border: 1px solid var(--success);
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 12px;
-}
+    /* --- Helpers --- */
+    .muted { color: var(--muted); font-size: 0.85rem; }
+    .small-note { font-size: 0.8rem; color: var(--success); display: block; margin-top: 5px; }
+    
+    /* Result Summary Area */
+    #summaryArea { margin-top: 20px; }
+    #summaryArea table { margin-top: 10px; }
 
-/* Media queries: mobile adjustments */
-@media (max-width: 768px){
-  .wrap { padding: 6px; }
-  .card { padding: 12px; }
+    /* --- Mobile Responsiveness (The Main Fix) --- */
+    @media (max-width: 768px) {
+      .wrap { padding: 10px; }
+      .card { padding: 15px; }
 
-  .row{
-    flex-direction: column;
-    gap: 0;
-  }
+      /* In mobile, keep main inputs full width or 2 per row depending on space */
+      .grid-row {
+        grid-template-columns: 1fr; /* Stack vertically on small mobile */
+        gap: 10px; /* Reduce gap */
+      }
 
-  .col, .col-small {
-    min-width: 100%;
-  }
+      /* Fix for Monthly Inputs: Show 2 per row instead of 1 long column */
+      .months-grid {
+        grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
+        gap: 10px;
+      }
 
-  /* If you want monthly inputs to appear as two columns on small screens,
-     keep these rules; otherwise they will stack (column). Here I default to stacking. */
-  #monthlyInputArea {
-    display: flex;
-    flex-direction: column; /* previously row — that contradicted the general .row rule */
-    gap: 8px;
-    flex-wrap: nowrap;
-  }
-
-  /* If you specifically want half-width small columns on narrow screens,
-     uncomment the rules below and comment the flex-direction above.
-  #monthlyInputArea {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  #monthlyInputArea .col-small {
-    flex-basis: calc(50% - 6px);
-    min-width: unset;
-  }
-  */
-
-  table {
-    font-size: 12px;
-    white-space: normal;
-  }
-
-  th, td {
-    padding: 6px 4px;
-  }
-
-  /* Keep this only if your table has at least 8 columns and you need to shrink the 8th cell */
-  #recordsArea table td:nth-child(8) {
-    font-size: 10px !important;
-  }
-}
-
-/* Small extra: visually-hidden helper if needed */
-.visually-hidden {
-  position: absolute !important;
-  height: 1px; width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
-}
-
-/* End of stylesheet */
-</style>
-
+      /* Reduce font sizes slightly */
+      h1 { font-size: 1.3rem; }
+      h2 { font-size: 1.1rem; }
+      
+      /* Reduce padding in inputs */
+      input, select { padding: 8px 10px; }
+      
+      /* Table adjustments */
+      th, td { padding: 8px 4px; font-size: 0.85rem; }
+    }
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-    <h1>حفظ منیجر — چار سالہ پلان (ششماہی اندراج)</h1>
 
-    <div class="small muted">
-      <strong>مفروضات:</strong> 1 پارہ = 20 صفحات / 1 پاؤ = 5 صفحات
-    </div>
+<div class="wrap">
+  <div class="card">
+    <h1>حفظ منیجر — چار سالہ پلان (ششماہی)</h1>
+    <div class="muted" style="text-align:center;">
+      1 پارہ = 20 صفحات / 1 پاؤ = 5 صفحات
+    </div>
 
-    <div class="row" style="margin-top:10px;">
-      <div class="col">
-        <label>بچے کا نام</label>
-        <input type="text" id="studentName" placeholder="بچے کا پورا نام لکھیں">
-      </div>
-      <div class="col">
-        <label>آغازِ حفظ کی تاریخ</label>
-        <input type="date" id="startDate" onchange="onStartChange()">
-      </div>
-      <div class="col">
-        <label>متوقع تکمیل کی تاریخ (چار سال بعد)</label>
-        <input type="text" id="expectedEnd" readonly style="background:#f7fff7;">
-        <div class="small muted" style="margin-top:4px;">*لوکل سٹوریج فعال ہے: ریفریش پر ڈیٹا ضائع نہیں ہوگا۔</div>
-      </div>
-    </div>
+    <div class="grid-row" style="margin-top: 20px;">
+      <div>
+        <label>بچے کا نام</label>
+        <input type="text" id="studentName" placeholder="نام لکھیں">
+      </div>
+      <div>
+        <label>آغازِ حفظ کی تاریخ</label>
+        <input type="date" id="startDate">
+      </div>
+      <div>
+        <label>متوقع تکمیل (4 سال)</label>
+        <input type="text" id="expectedEnd" readonly style="background:#f9f9f9;">
+        <span class="small-note">*ڈیٹا خودکار محفوظ ہوتا ہے</span>
+      </div>
+    </div>
 
-    <h2 style="margin-top:16px; margin-bottom:-60px; text-align:center;">چار سالہ تقسیم — سال بمطابق پارے</h2>
-    <div id="targetsArea" class="card" style="margin-top:10px;"></div>
+    <div id="targetsArea" style="margin-top:20px; overflow-x:auto;"></div>
 
-    <h2 style="margin-top:18px;">ششماہی ریکارڈ کا اندراج</h2>
-    <div class="row">
-      <div class="col">
-        <label>سال منتخب کریں</label>
-        <select id="selectYear"></select>
-        
-      </div>
-      <div class="col">
-        <label>ششماہی منتخب کریں</label>
-        <select id="selectHalfYear">
-          <option value="1">ششماہی اول (پہلے 6 ماہ)</option>
-          <option value="2">ششماہی دوم (اگلے 6 ماہ)</option>
-        </select>
-      </div>
-      <div class="col">
-        <label>ششماہی ہدف صفحات</label>
-        <input type="text" id="halfYearTarget" readonly style="background:#f0f4ff;">
-      </div>
-    </div>
+    <h2>ششماہی ریکارڈ کا اندراج</h2>
 
-    <h3 style="margin-top:16px;">📚 ماہانہ صفحات کا اندراج (چھ مہینے)</h3>
-    <div class="row" id="monthlyInputArea"></div>
+    <div class="grid-row">
+      <div>
+        <label>سال منتخب کریں</label>
+        <select id="selectYear"></select>
+      </div>
+      <div>
+        <label>ششماہی منتخب کریں</label>
+        <select id="selectHalfYear">
+          <option value="1">ششماہی اول (پہلے 6 ماہ)</option>
+          <option value="2">ششماہی دوم (اگلے 6 ماہ)</option>
+        </select>
+      </div>
+      <div>
+        <label>ششماہی ہدف (صفحات)</label>
+        <input type="text" id="halfYearTarget" readonly style="background:#eef2f6; font-weight:bold; color:var(--accent);">
+      </div>
+    </div>
 
-    <div class="row" style="margin-top:14px;">
-        <div class="col">
-            <label>ششماہی کل پڑھے گئے صفحات</label>
-            <input type="text" id="totalPagesField" readonly>
-        </div>
-        <div class="col">
-            <label>ششماہی فیصد (ہدف کے مقابلے)</label>
-            <input type="text" id="percentField" readonly>
-        </div>
-        <div class="col">
-            <label>اسکور (Thresholds)</label>
-            <input type="text" id="scoreField" readonly>
-        </div>
-    </div>
+    <h3>📚 ماہانہ صفحات (ہر مہینے کا اندراج کریں)</h3>
+    <div id="monthlyInputArea" class="months-grid"></div>
 
-    <div style="margin-top:8px; text-align:center;">
-        <button onclick="saveRecord()">ششماہی ریکارڈ محفوظ کریں</button>
-    </div>
+    <div class="grid-row" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px dashed #ccc;">
+      <div>
+        <label>کل پڑھے گئے صفحات</label>
+        <input type="text" id="totalPagesField" readonly>
+      </div>
+      <div>
+        <label>ششماہی فیصد</label>
+        <input type="text" id="percentField" readonly>
+      </div>
+      <div>
+        <label>اسکور</label>
+        <input type="text" id="scoreField" readonly>
+      </div>
+    </div>
 
-    <div id="recordsArea" style="margin-top:24px;"></div>
+    <div class="btn-container">
+      <button onclick="saveRecord()">ششماہی ریکارڈ محفوظ کریں</button>
+    </div>
+  </div>
 
-    <div id="summaryArea" style="margin-top:12px;"></div>
-  </div>
-  </div>
+  <div id="recordsArea"></div>
+  
+  <div id="summaryArea"></div>
+
+</div>
 
 <script>
 /* ========== CONFIG ========== */
-const PAGES_PER_JUZ = 20;   // 1 پارہ = 20 صفحات
-const PAGES_PER_PAO = 5;    // 1 پاؤ = 5 صفحات
+const PAGES_PER_JUZ = 20;
+const PAGES_PER_PAO = 5;
 
-// آپ کی طے کردہ سالانہ پاروں کی تقسیم
 const yearTargets = {
-  1: [30,29,28],
-  2: [27,26,25,24,23,22],
-  3: [21,20,19,18,17,16,15,14,13],
-  4: [12,11,10,9,8,7,6,5,4,3,2,1]
+  1: [30,29,28],
+  2: [27,26,25,24,23,22],
+  3: [21,20,19,18,17,16,15,14,13],
+  4: [12,11,10,9,8,7,6,5,4,3,2,1]
 };
 
 const scoreThresholds = [
-  { pct:100, score:100 },
-  { pct:75,  score:75 },
-  { pct:50,  score:50 },
-  { pct:25,  score:25 }
+  { pct:100, score:100 },
+  { pct:75,  score:75 },
+  { pct:50,  score:50 },
+  { pct:25,  score:25 }
 ];
 
-// *اہم تبدیلی*
-// لوکل سٹوریج میں محفوظ کردہ مکمل ڈیٹا ڈھانچہ
 let storedData = {
-  records: [],
-  studentName: '',
-  startDate: ''
+  records: [],
+  studentName: '',
+  startDate: ''
 };
 
 /* ========== INITIALIZATION ========== */
 window.addEventListener('DOMContentLoaded', ()=>{
-  buildTargetsArea();
-  loadFromLocal(); // پہلے ڈیٹا لوڈ کریں
-  
-  // ان پٹ فیلڈز کو لوڈ شدہ ڈیٹا سے پُر کریں
-  document.getElementById('studentName').value = storedData.studentName;
-  document.getElementById('startDate').value = storedData.startDate;
-  
-  // ان پٹ پر تبدیلی کے لیے ایونٹ لسنر شامل کریں تاکہ نام اور تاریخ بھی ساتھ محفوظ ہو جائے
-  document.getElementById('studentName').addEventListener('input', updateInputAndSave);
-  document.getElementById('startDate').addEventListener('change', updateInputAndSave);
+  buildTargetsArea();
+  loadFromLocal();
+  
+  // Fill inputs
+  document.getElementById('studentName').value = storedData.studentName;
+  document.getElementById('startDate').value = storedData.startDate;
+  
+  // Listeners for auto-saving inputs
+  document.getElementById('studentName').addEventListener('input', updateInputAndSave);
+  document.getElementById('startDate').addEventListener('change', updateInputAndSave);
 
-  onStartChange(); // تاریخ تکمیل سیٹ کریں
-
-  populateYearSelect();
-  
-  // اگر سلیکٹ باکس کی ویلیو سیٹ نہ ہو تو ڈیفالٹ 1 سیٹ کریں
-  if(!document.getElementById('selectYear').value) document.getElementById('selectYear').value = '1';
-  if(!document.getElementById('selectHalfYear').value) document.getElementById('selectHalfYear').value = '1';
-  
-  renderMonthlyInputs();
-  updateCalcFields();
-  renderAll();
+  onStartChange();
+  populateYearSelect();
+  
+  if(!document.getElementById('selectYear').value) document.getElementById('selectYear').value = '1';
+  if(!document.getElementById('selectHalfYear').value) document.getElementById('selectHalfYear').value = '1';
+  
+  renderMonthlyInputs();
+  updateCalcFields();
+  renderAll();
 });
 
-// نئی فنکشن: یوزر ان پٹ کو سنبھالنے اور لوکل سٹوریج میں نام/تاریخ کو محفوظ کرنے کے لیے
 function updateInputAndSave() {
-  storedData.studentName = document.getElementById('studentName').value.trim();
-  storedData.startDate = document.getElementById('startDate').value;
-  saveToLocal();
-  onStartChange();
+  storedData.studentName = document.getElementById('studentName').value.trim();
+  storedData.startDate = document.getElementById('startDate').value;
+  saveToLocal();
+  onStartChange();
 }
 
 /* ========== UI BUILDERS ========== */
 function buildTargetsArea(){
-  const el = document.getElementById('targetsArea');
-  let html = `<table><thead><tr><th>سال</th><th>پارے</th><th>کل پارے</th><th>سالانہ کل صفحات</th><th>ششماہی ہدف صفحات</th></tr></thead><tbody>`;
-  for(let y=1;y<=4;y++){
-    const arr = yearTargets[y];
-    const totalJuz = arr.length;
-    const totalPages = totalJuz * PAGES_PER_JUZ;
-    const halfYearTarget = totalPages / 2;
-    html += `<tr>
-      <td>سال ${y}</td>
-      <td>${arr.join(', ')}</td>
-      <td>${totalJuz}</td>
-      <td>${totalPages}</td>
-      <td>${halfYearTarget}</td>
-    </tr>`;
-  }
-  html += `</tbody></table>`;
-  el.innerHTML = html;
+  const el = document.getElementById('targetsArea');
+  let html = `<div class="table-responsive"><table><thead><tr><th>سال</th><th>پارے</th><th>کل پارے</th><th>سالانہ کل صفحات</th><th>ششماہی ہدف صفحات</th></tr></thead><tbody>`;
+  for(let y=1;y<=4;y++){
+    const arr = yearTargets[y];
+    const totalJuz = arr.length;
+    const totalPages = totalJuz * PAGES_PER_JUZ;
+    const halfYearTarget = totalPages / 2;
+    html += `<tr>
+      <td>سال ${y}</td>
+      <td style="font-size:0.9rem">${arr.join(', ')}</td>
+      <td>${totalJuz}</td>
+      <td>${totalPages}</td>
+      <td>${halfYearTarget}</td>
+    </tr>`;
+  }
+  html += `</tbody></table></div>`;
+  el.innerHTML = html;
 }
 
 function populateYearSelect(){
-  const sel = document.getElementById('selectYear');
-  sel.innerHTML = '';
-  for(let i=1;i<=4;i++){
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = `سال ${i} — ${yearTargets[i].length} پارے`;
-    sel.appendChild(opt);
-  }
-  sel.addEventListener('change', () => { renderMonthlyInputs(); updateCalcFields(); });
-  document.getElementById('selectHalfYear').addEventListener('change', () => { renderMonthlyInputs(); updateCalcFields(); });
+  const sel = document.getElementById('selectYear');
+  sel.innerHTML = '';
+  for(let i=1;i<=4;i++){
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `سال ${i} (${yearTargets[i].length} پارے)`;
+    sel.appendChild(opt);
+  }
+  sel.addEventListener('change', () => { renderMonthlyInputs(); updateCalcFields(); });
+  document.getElementById('selectHalfYear').addEventListener('change', () => { renderMonthlyInputs(); updateCalcFields(); });
 }
 
-/* ========== DATE / CALC HELPERS ========== */
+/* ========== HELPERS ========== */
 function onStartChange(){
-  const sd = document.getElementById('startDate').value;
-  if(!sd) { document.getElementById('expectedEnd').value=''; return; }
-  const d = new Date(sd);
-  d.setFullYear(d.getFullYear() + 4);
-  document.getElementById('expectedEnd').value = d.toISOString().split('T')[0];
+  const sd = document.getElementById('startDate').value;
+  if(!sd) { document.getElementById('expectedEnd').value=''; return; }
+  const d = new Date(sd);
+  d.setFullYear(d.getFullYear() + 4);
+  document.getElementById('expectedEnd').value = d.toISOString().split('T')[0];
 }
 
 function pagesToPao(p){ return +(p / PAGES_PER_PAO).toFixed(2); }
-
-function pagesToJuz(p){ return +(p / PAGES_PER_JUZ).toFixed(2); } // نئی فنکشن: صفحات -> پارہ
+function pagesToJuz(p){ return +(p / PAGES_PER_JUZ).toFixed(2); }
 
 function pagesToPercentOfHalfYearTarget(pages, year){
-  const totalJuz = yearTargets[year].length;
-  const totalPagesOfYear = totalJuz * PAGES_PER_JUZ;
-  const targetPagesForHalfYear = totalPagesOfYear / 2;
-  // اگر ہدف 0 ہو تو فیصد 0 ہو گا، ورنہ حساب لگائیں گے
-  const pct = targetPagesForHalfYear ? (pages / targetPagesForHalfYear) * 100 : 0; 
-  return +(pct).toFixed(2);
+  const totalJuz = yearTargets[year].length;
+  const totalPagesOfYear = totalJuz * PAGES_PER_JUZ;
+  const targetPagesForHalfYear = totalPagesOfYear / 2;
+  const pct = targetPagesForHalfYear ? (pages / targetPagesForHalfYear) * 100 : 0; 
+  return +(pct).toFixed(2);
 }
 
 function percentToScore(pct){
-  for(const t of scoreThresholds){
-    if(pct >= t.pct) return t.score;
-  }
-  return 0;
+  for(const t of scoreThresholds){
+    if(pct >= t.pct) return t.score;
+  }
+  return 0;
 }
 
 /* ========== MONTHLY INPUTS ========== */
 function renderMonthlyInputs() {
-    const year = Number(document.getElementById('selectYear').value || 1);
-    const halfYear = Number(document.getElementById('selectHalfYear').value || 1);
-    const startMonth = (halfYear === 1) ? 1 : 7;
-    const el = document.getElementById('monthlyInputArea');
-    el.innerHTML = '';
+  const year = Number(document.getElementById('selectYear').value || 1);
+  const halfYear = Number(document.getElementById('selectHalfYear').value || 1);
+  const startMonth = (halfYear === 1) ? 1 : 7;
+  const el = document.getElementById('monthlyInputArea');
+  el.innerHTML = '';
 
-    const totalJuz = yearTargets[year].length;
-    const totalPagesOfYear = totalJuz * PAGES_PER_JUZ;
-    const halfYearTarget = totalPagesOfYear / 2;
+  const totalJuz = yearTargets[year].length;
+  const totalPagesOfYear = totalJuz * PAGES_PER_JUZ;
+  const halfYearTarget = totalPagesOfYear / 2;
 
-    document.getElementById('halfYearTarget').value = `${halfYearTarget} صفحات`;
+  document.getElementById('halfYearTarget').value = `${halfYearTarget}`;
 
-    for(let i=0; i<6; i++) {
-        const monthNum = startMonth + i;
-        const col = document.createElement('div');
-        col.className = 'col-small';
-        col.innerHTML = `
-            <label>مہینہ ${monthNum}</label>
-            <input type="number" min="0" data-month="${monthNum}" class="month-pages" placeholder="صفحات" oninput="updateCalcFields()">
-        `;
-        el.appendChild(col);
-    }
+  for(let i=0; i<6; i++) {
+    const monthNum = startMonth + i;
+    const div = document.createElement('div');
+    // Note: No extra classes needed, grid handles spacing
+    div.innerHTML = `
+      <label>مہینہ ${monthNum}</label>
+      <input type="number" min="0" data-month="${monthNum}" class="month-pages" placeholder="0" oninput="updateCalcFields()">
+    `;
+    el.appendChild(div);
+  }
 }
 
-/* ========== REAL-TIME CALCULATION ========== */
+/* ========== CALCULATION ========== */
 function updateCalcFields(){
-    const year = Number(document.getElementById('selectYear').value || 1);
-    let totalPages = 0;
+  const year = Number(document.getElementById('selectYear').value || 1);
+  let totalPages = 0;
+  const monthInputs = document.querySelectorAll('.month-pages');
+  monthInputs.forEach(input => { totalPages += Number(input.value || 0); });
 
-    const monthInputs = document.querySelectorAll('.month-pages');
-    monthInputs.forEach(input => {
-        totalPages += Number(input.value || 0);
-    });
+  const pct = pagesToPercentOfHalfYearTarget(totalPages, year);
+  const score = percentToScore(pct);
 
-    const pct = pagesToPercentOfHalfYearTarget(totalPages, year);
-    const score = percentToScore(pct);
-
-    document.getElementById('totalPagesField').value = `${totalPages} صفحات`;
-    document.getElementById('percentField').value = `${pct} %`;
-    document.getElementById('scoreField').value = `${score} نمبر`;
+  document.getElementById('totalPagesField').value = `${totalPages}`;
+  document.getElementById('percentField').value = `${pct}%`;
+  document.getElementById('scoreField').value = `${score}`;
 }
 
 /* ========== SAVE / LOAD ========== */
 function saveRecord(){
-    // *بہتری:* ان پٹ فیلڈز سے نام اور تاریخ کو یقینی بنائیں
-    const name = document.getElementById('studentName').value.trim();
-    const start = document.getElementById('startDate').value;
+  const name = document.getElementById('studentName').value.trim();
+  const start = document.getElementById('startDate').value;
 
-    if(!name || !start){
-        alert('براہِ کرم بچے کا نام اور آغازِ تاریخ درج کریں۔');
-        return;
-    }
+  if(!name || !start){
+    alert('براہِ کرم بچے کا نام اور آغازِ تاریخ درج کریں۔');
+    return;
+  }
 
-    const year = Number(document.getElementById('selectYear').value);
-    const halfYear = Number(document.getElementById('selectHalfYear').value);
+  const year = Number(document.getElementById('selectYear').value);
+  const halfYear = Number(document.getElementById('selectHalfYear').value);
 
-    let totalPages = 0;
-    let monthlyDetails = {};
-    const monthInputs = document.querySelectorAll('.month-pages');
+  let totalPages = 0;
+  let monthlyDetails = {};
+  const monthInputs = document.querySelectorAll('.month-pages');
 
-    monthInputs.forEach(input => {
-        const monthPages = Number(input.value || 0);
-        totalPages += monthPages;
-        const monthNum = input.getAttribute('data-month');
-        monthlyDetails[monthNum] = monthPages;
-    });
+  monthInputs.forEach(input => {
+    const monthPages = Number(input.value || 0);
+    totalPages += monthPages;
+    const monthNum = input.getAttribute('data-month');
+    monthlyDetails[monthNum] = monthPages;
+  });
 
-    if(totalPages === 0) {
-        alert('براہِ کرم کم از کم ایک مہینے کے صفحات درج کریں۔');
-        return;
-    }
+  if(totalPages === 0) {
+    alert('براہِ کرم کم از کم ایک مہینے کے صفحات درج کریں۔');
+    return;
+  }
 
-    const pao = pagesToPao(totalPages);
-    const juz = pagesToJuz(totalPages); // پارہ شامل کیا گیا
-    const pct = pagesToPercentOfHalfYearTarget(totalPages, year);
-    const score = percentToScore(pct);
+  const pao = pagesToPao(totalPages);
+  const juz = pagesToJuz(totalPages);
+  const pct = pagesToPercentOfHalfYearTarget(totalPages, year);
+  const score = percentToScore(pct);
 
-    const rec = {
-        name, start, year, halfYear, 
-        pages: totalPages,
-        pao, juz, pct, score, // juz/پارہ شامل کیا گیا
-        monthlyDetails: monthlyDetails,
-        ts: new Date().toISOString()
-    };
+  const rec = {
+    name, start, year, halfYear, 
+    pages: totalPages,
+    pao, juz, pct, score,
+    monthlyDetails: monthlyDetails,
+    ts: new Date().toISOString()
+  };
 
-    // ریکارڈ پہلے سے موجود ہے تو چیک کریں
-    const existingIndex = storedData.records.findIndex(r => r.year === year && r.halfYear === halfYear && r.name === name);
+  const existingIndex = storedData.records.findIndex(r => r.year === year && r.halfYear === halfYear && r.name === name);
 
-    if (existingIndex > -1) {
-        if (confirm(`سال ${year} کی ششماہی ${halfYear} کا ریکارڈ پہلے سے موجود ہے۔ کیا آپ اسے نئے ڈیٹا سے تبدیل کرنا چاہتے ہیں؟`)) {
-            storedData.records[existingIndex] = rec;
-        } else {
-            return;
-        }
-    } else {
-        storedData.records.push(rec);
-    }
-    
-    // نام اور تاریخ کو بھی محفوظ کریں
-    storedData.studentName = name;
-    storedData.startDate = start;
-
-    saveToLocal();
-    document.querySelectorAll('.month-pages').forEach(input => input.value = '');
-    updateCalcFields();
-    renderAll();
+  if (existingIndex > -1) {
+    if (confirm(`سال ${year} ششماہی ${halfYear} کا ریکارڈ موجود ہے۔ کیا آپ تبدیل کرنا چاہتے ہیں؟`)) {
+      storedData.records[existingIndex] = rec;
+    } else {
+      return;
+    }
+  } else {
+    storedData.records.push(rec);
+  }
+  
+  storedData.studentName = name;
+  storedData.startDate = start;
+  saveToLocal();
+  
+  // Clear inputs
+  document.querySelectorAll('.month-pages').forEach(input => input.value = '');
+  updateCalcFields();
+  renderAll();
 }
 
-// *بہتری:* لوکل سٹوریج کو محفوظ کرنے کا نیا طریقہ
 function saveToLocal(){
-  try{
-    // مکمل storedData آبجیکٹ کو محفوظ کریں
-    localStorage.setItem('hf_records_v1', JSON.stringify(storedData));
-  }catch(e){
-    console.error('LocalStorage save error', e);
-  }
+  try{ localStorage.setItem('hf_records_v1', JSON.stringify(storedData)); }
+  catch(e){ console.error('Error saving', e); }
 }
 
-// *بہتری:* لوکل سٹوریج سے لوڈ کرنے کا نیا طریقہ
 function loadFromLocal(){
-  try{
-    const raw = localStorage.getItem('hf_records_v1');
-    if(raw){
-      const parsed = JSON.parse(raw);
-      // اگر ڈیٹا موجود ہو تو storedData میں لوڈ کریں
-      if(parsed && parsed.records) {
-        storedData = parsed;
-        // یقینی بنائیں کہ نام اور تاریخ بھی موجود ہے اگر صرف ریکارڈز محفوظ ہوئے ہوں
-        storedData.studentName = storedData.studentName || '';
-        storedData.startDate = storedData.startDate || '';
-      } else {
-        storedData = { records: [], studentName: '', startDate: '' };
-      }
-    }
-  }catch(e){
-    console.warn('Failed to parse saved records - resetting.', e);
-    storedData = { records: [], studentName: '', startDate: '' };
-  }
+  try{
+    const raw = localStorage.getItem('hf_records_v1');
+    if(raw){
+      const parsed = JSON.parse(raw);
+      if(parsed && parsed.records) storedData = parsed;
+      else storedData = { records: [], studentName: '', startDate: '' };
+      
+      // Ensure fallbacks
+      storedData.studentName = storedData.studentName || '';
+      storedData.startDate = storedData.startDate || '';
+    }
+  }catch(e){
+    storedData = { records: [], studentName: '', startDate: '' };
+  }
 }
 
-/* ========== RENDER RECORDS & SUMMARY ========== */
+/* ========== RENDER TABLES ========== */
 function renderAll(){
-  renderRecordsTable();
-  renderSummary();
+  renderRecordsTable();
+  renderSummary();
 }
 
-// محفوظ شدہ ریکارڈز ٹیبل کو آپ کی تصویر کے مطابق رینڈر کریں
 function renderRecordsTable(){
-  const el = document.getElementById('recordsArea');
-  // records کو storedData.records سے لیں
-  const records = storedData.records;
-  
-  if(records.length === 0){
-    el.innerHTML = `<div class="small muted">ابھی کوئی ریکارڈ محفوظ نہیں ہوا۔</div>`;
-    return;
-  }
-  
-  let html = `<h3>محفوظ شدہ ششماہی ریکارڈز</h3><table><thead>
-    <tr>
-      <th>طالب علم کا نام</th>
-      <th>سال/ششماہی</th>
-      <th>صفحات</th>
-      <th>پاؤ</th>
-      <th>پارہ</th>
-      <th>ششماہی ہدف فیصد</th>
-      <th>ماہانہ تفصیل</th>
-      <th>وقت اندراج</th>
-      <th>عمل</th>
-    </tr>
-  </thead><tbody>`;
-  
-  for(let i=0;i<records.length;i++){
-    const r = records[i];
-    
-    // ماہانہ تفصیل کو 'م1:12/م2:10/...' کی فارمیٹ میں لانا
-    const monthlyText = Object.keys(r.monthlyDetails)
-      .map(m => `م${m}:${r.monthlyDetails[m]}`)
-      .join('/');
-      
-    // وقت اندراج (تاریخ + وقت) کو بہتر ڈسپلے کے لیے فارمیٹ کرنا
-    const dateObj = new Date(r.ts);
-    // وقت کو 12 گھنٹے کے فارمیٹ میں لائیں
-    const timeStr = dateObj.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }); 
-    // تاریخ کو DD/MM/YY فارمیٹ میں لائیں
-    const dateStr = dateObj.toLocaleDateString('en-GB', { year: '2-digit', month: '2-digit', day: '2-digit' }); 
-    
-    html += `<tr>
-      <td>${r.name}</td>
-      <td>سال ${r.year}/ششماہی ${r.halfYear}</td>
-      <td>${r.pages}</td>
-      <td>${r.pao}</td>
-      <td>${r.juz}</td>
-      <td>${r.pct}%</td>
-      <td style="font-size:12px; white-space:nowrap;">${monthlyText}</td>
-      <td style="font-size:12px; direction:ltr; text-align:right;">${dateStr}<br/>${timeStr}</td>       
-      <td><button onclick="deleteRecord(${i})" style="background:#c62828;padding:6px 8px;border-radius:6px;">حذف</button></td>
-    </tr>`;
-  }
-  html += `</tbody></table>`;
-  el.innerHTML = html;
+  const el = document.getElementById('recordsArea');
+  const records = storedData.records;
+  
+  if(records.length === 0){
+    el.innerHTML = `<div class="card" style="text-align:center; color:#666;">ابھی کوئی ریکارڈ موجود نہیں ہے۔</div>`;
+    return;
+  }
+  
+  // Table Layout matches your handwritten image requirement
+  let html = `<div class="card">
+    <h3>محفوظ شدہ ریکارڈز</h3>
+    <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th>نام طالب علم</th>
+          <th>سال/ششماہی</th>
+          <th>صفحات</th>
+          <th>پاؤ</th>
+          <th>پارہ</th>
+          <th>ششماہی ہدف %</th>
+          <th style="min-width:150px;">ماہانہ تفصیل</th>
+          <th>وقت اندراج</th>
+          <th>عمل</th>
+        </tr>
+      </thead>
+      <tbody>`;
+  
+  for(let i=0;i<records.length;i++){
+    const r = records[i];
+    const monthlyText = Object.keys(r.monthlyDetails).map(m => `م${m}:${r.monthlyDetails[m]}`).join(' / ');
+    
+    const dateObj = new Date(r.ts);
+    const timeStr = dateObj.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+    const dateStr = dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' });
+    
+    html += `<tr>
+      <td>${r.name}</td>
+      <td>سال ${r.year}<br><span style="font-size:0.85rem; color:#666;">ششماہی ${r.halfYear}</span></td>
+      <td style="font-weight:bold;">${r.pages}</td>
+      <td>${r.pao}</td>
+      <td>${r.juz}</td>
+      <td style="color:${r.pct >= 75 ? 'green' : 'red'}; font-weight:bold;">${r.pct}%</td>
+      <td style="font-size:0.85rem; text-align:right; direction:ltr;">${monthlyText}</td>
+      <td style="font-size:0.8rem; direction:ltr;">${timeStr}<br>${dateStr}</td>
+      <td><button onclick="deleteRecord(${i})" style="padding:6px 10px; font-size:0.8rem; background:var(--danger);">حذف</button></td>
+    </tr>`;
+  }
+  html += `</tbody></table></div></div>`;
+  el.innerHTML = html;
 }
 
 function deleteRecord(idx){
-  if(!confirm('کیا آپ واقعی اس ریکارڈ کو حذف کرنا چاہتے ہیں؟')) return;
-  storedData.records.splice(idx,1);
-  saveToLocal();
-  renderAll();
+  if(!confirm('کیا آپ واقعی حذف کرنا چاہتے ہیں؟')) return;
+  storedData.records.splice(idx,1);
+  saveToLocal();
+  renderAll();
 }
 
-// خلاصہ فنکشن
 function renderSummary(){
-  const el = document.getElementById('summaryArea');
-  const records = storedData.records;
-  
-  if(records.length === 0){
-    el.innerHTML = '';
-    return;
-  }
+  const el = document.getElementById('summaryArea');
+  const records = storedData.records;
+  if(records.length === 0){ el.innerHTML = ''; return; }
 
-  const perYear = {};
-  for(let y=1;y<=4;y++) perYear[y] = { pages:0, halfYearCount:0, scoreSum:0, targetPages:0 };
+  const perYear = {};
+  for(let y=1;y<=4;y++) perYear[y] = { pages:0, halfYearCount:0, scoreSum:0, targetPages:0 };
 
-  let overallPages = 0;
-  let overallTargetPages = 0;
+  let overallPages = 0;
+  let overallTargetPages = 0;
 
-  for(const r of records){
-    const targetPagesOfYear = yearTargets[r.year].length * PAGES_PER_JUZ;
+  for(const r of records){
+    const targetPagesOfYear = yearTargets[r.year].length * PAGES_PER_JUZ;
+    if(perYear[r.year].targetPages === 0) {
+        perYear[r.year].targetPages = targetPagesOfYear;
+        overallTargetPages += targetPagesOfYear;
+    }
+    perYear[r.year].pages += r.pages;
 
-    if(perYear[r.year].targetPages === 0) {
-        perYear[r.year].targetPages = targetPagesOfYear;
-        overallTargetPages += targetPagesOfYear;
-    }
+    if (!perYear[r.year].halfYearsRecorded) perYear[r.year].halfYearsRecorded = new Set();
+    perYear[r.year].halfYearsRecorded.add(r.halfYear);
+    perYear[r.year].halfYearCount = perYear[r.year].halfYearsRecorded.size;
 
-    perYear[r.year].pages += r.pages;
+    perYear[r.year].scoreSum += r.score;
+    overallPages += r.pages;
+  }
 
-    if (!perYear[r.year].halfYearsRecorded) {
-      perYear[r.year].halfYearsRecorded = new Set();
-    }
-    perYear[r.year].halfYearsRecorded.add(r.halfYear);
-    perYear[r.year].halfYearCount = perYear[r.year].halfYearsRecorded.size;
+  let out = `<div class="card result">
+    <h3>خلاصہ مجموعی اور سال وار</h3>
+    <div class="table-responsive">
+    <table>
+      <thead>
+        <tr><th>سال</th><th>سالانہ ہدف</th><th>کل پڑھے گئے</th><th>مکمل ششماہی</th><th>فیصد</th><th>اوسط اسکور</th></tr>
+      </thead>
+      <tbody>`;
 
-    perYear[r.year].scoreSum += r.score;
-    overallPages += r.pages;
-  }
+  for(let y=1;y<=4;y++){
+    const totalPages = perYear[y].targetPages;
+    const got = perYear[y].pages;
+    const count = perYear[y].halfYearCount || 0;
+    const pct = totalPages ? +((got / totalPages) * 100).toFixed(2) : 0;
+    const avgScore = (perYear[y].scoreSum && count) ? +(perYear[y].scoreSum / count).toFixed(1) : 0;
 
-  let out = `<div class="result"><strong>خلاصہ مجموعی اور سال وار:</strong><br><div class="small muted">ہر سال کے ہدف صفحات کا موازنہ مکمل ہونے والے ششماہی صفحات سے کیا جائے گا۔</div><br><table><thead><tr><th>سال</th><th>سالانہ ہدف صفحات</th><th>کل پڑھے گئے صفحات</th><th>مکمل ششماہی</th><th>فیصد</th><th>اوسط اسکور</th></tr></thead><tbody>`;
-
-  for(let y=1;y<=4;y++){
-    const totalPages = perYear[y].targetPages;
-    const got = perYear[y].pages;
-    const count = perYear[y].halfYearCount || 0;
-    const pct = totalPages ? +((got / totalPages) * 100).toFixed(2) : 0;
-    const avgScore = (perYear[y].scoreSum && count) ? +(perYear[y].scoreSum / count).toFixed(1) : 0;
-
-    out += `<tr>
-        <td>سال ${y}</td>
-        <td>${totalPages}</td>
-        <td>${got}</td>
-        <td>${count} از 2</td>
-        <td>${pct}%</td>
-        <td>${avgScore}</td>
-    </tr>`;
-  }
-  out += `</tbody></table>`;
-
-  const overallPct = overallTargetPages ? +((overallPages / overallTargetPages) * 100).toFixed(2) : 0;
-  out += `<hr><div><strong>کل مجموعی:</strong> کل صفحات پڑھے: ${overallPages}  ، کل ہدف صفحات (4 سال): ${overallTargetPages}  ، <strong>مجموعی فیصد:</strong> ${overallPct}%</div>`;
-  out += `</div>`;
-  el.innerHTML = out;
+    out += `<tr>
+        <td>سال ${y}</td>
+        <td>${totalPages}</td>
+        <td>${got}</td>
+        <td>${count} / 2</td>
+        <td>${pct}%</td>
+        <td>${avgScore}</td>
+    </tr>`;
+  }
+  out += `</tbody></table></div>`;
+  
+  const overallPct = overallTargetPages ? +((overallPages / overallTargetPages) * 100).toFixed(2) : 0;
+  out += `<div style="margin-top:15px; border-top:1px solid #ccc; padding-top:10px; text-align:center;">
+      <strong>کل مجموعی:</strong> پڑھے گئے: ${overallPages} / ${overallTargetPages} <br> 
+      <strong style="font-size:1.1rem; color:var(--accent);">مجموعی فیصد: ${overallPct}%</strong>
+  </div></div>`;
+  el.innerHTML = out;
 }
 </script>
 </body>
